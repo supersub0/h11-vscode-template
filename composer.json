@@ -17,8 +17,8 @@
     ],
     "require": {
         "php-amqplib/php-amqplib": ">=2.9.0",
-        "supersub0/h11-storage": ">0",
-        "supersub0/h11-iterator": ">0",
+        "h11/storage": "master@dev",
+        "h11/iterator": "master@dev",
         "ext-json": "*"
     }
 }
