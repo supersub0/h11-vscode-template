@@ -1,0 +1,24 @@
+{
+    "name": "h11/wow.stats",
+    "autoload": {
+        "psr-4": {
+            "Converter\\": "src/"
+        }
+    },
+    "repositories": [
+        {
+          "type": "git",
+          "url": "ssh://git@github.com:supersub0/h11-storage.git"
+        },
+        {
+          "type": "git",
+          "url": "ssh://git@github.com:supersub0/h11-iterator.git"
+        }
+    ],
+    "require": {
+        "php-amqplib/php-amqplib": ">=2.9.0",
+        "supersub0/h11-storage": ">0",
+        "supersub0/h11-iterator": ">0",
+        "ext-json": "*"
+    }
+}
