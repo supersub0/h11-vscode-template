@@ -8,11 +8,11 @@
     "repositories": [
         {
           "type": "git",
-          "url": "ssh://git@github.com:supersub0/h11-storage.git"
+          "url": "git@github.com:supersub0/h11-storage.git"
         },
         {
           "type": "git",
-          "url": "ssh://git@github.com:supersub0/h11-iterator.git"
+          "url": "git@github.com:supersub0/h11-iterator.git"
         }
     ],
     "require": {
