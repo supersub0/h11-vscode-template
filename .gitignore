@@ -1,0 +1,36 @@
+*.swo
+*.swp
+*.diff
+.ht*
+*.orig
+*~
+*#
+.directory
+vagrant
+nbproject
+data
+conf
+*.conf.mk
+
+# Emacs
+.#*
+.dir-locals.el
+
+# Atom
+.tags*
+tags
+
+# phpStorm
+.idea/*
+!.idea/runConfigurations/
+.idea/runConfigurations/*
+!.idea/runConfigurations/Run_Behattests.xml
+!.idea/runConfigurations/Run_Unittests_behat.xml
+!.idea/runConfigurations/Run_Unittests_tbone.xml
+!.idea/runConfigurations/Run_Unittests_tbone_legacy.xml
+
+# Docker
+/.docker
+
+# Composer
+/vendor

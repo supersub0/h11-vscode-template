@@ -1,0 +1,55 @@
+version: "3.1"
+services:
+    www:
+        build: .
+        container_name: wow.stats.www
+        ports:
+            - "6661:80"
+        volumes:
+            - ./src:/var/www/src/
+            - ./www:/var/www/html/
+            - ./vendor:/var/www/vendor/
+        links:
+            - mq
+            - sql
+    mq:
+        image: rabbitmq:3-management-alpine
+        container_name: wow.stats.mq
+        ports:
+            - "6662:5672"
+            - "6663:15672"
+        environment:
+            RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+            RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PW}
+        volumes:
+            - ./.docker/rabbitmq/etc/:/etc/rabbitmq/
+            - ./.docker/rabbitmq/data/:/var/lib/rabbitmq/
+            - ./.docker/rabbitmq/logs/:/var/log/rabbitmq/
+    sql:
+        image: mysql:8
+        container_name: wow.stats.sql
+        ports:
+            - "6664:3306"
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            MYSQL_DATABASE: ${MYSQL_DB}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PW}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PW}
+        volumes:
+            - ./dump:/docker-entrypoint-initdb.d
+            - ./.docker/mysql/conf:/etc/mysql/conf.d
+            - ./.docker/mysql/data:/var/lib/mysql
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: wow.stats.sqladmin
+        links:
+            - sql:sql
+        ports:
+            - "6665:80"
+        environment:
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PW}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PW}
+volumes:
+    persistent:
