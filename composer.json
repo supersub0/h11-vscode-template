@@ -13,12 +13,17 @@
         {
           "type": "git",
           "url": "git@github.com:supersub0/h11-iterator.git"
+        },
+        {
+          "type": "git",
+          "url": "git@github.com:supersub0/h11-vscode-server-config.git"
         }
     ],
     "require": {
         "php-amqplib/php-amqplib": ">=2.9.0",
         "h11/storage": "master@dev",
         "h11/iterator": "master@dev",
+        "h11/vscode-server-config": "master@dev",
         "ext-json": "*"
     }
 }
