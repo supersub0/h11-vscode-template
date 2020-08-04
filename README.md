@@ -36,7 +36,7 @@ Destroy all container that are defined in docker-compose file
 #### make mysql
 Opens mysql connection for mysql server defined in docker-compose
 
-## Required Makefile config wow.stats.conf.mk
+## Required Makefile config h11.conf.mk
 
 ### Values
 

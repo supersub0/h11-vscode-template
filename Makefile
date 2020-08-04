@@ -1,4 +1,4 @@
-include ./wow.stats.conf.mk
+include ./h11.conf.mk
 
 up:
 	composer install
