@@ -1,29 +1,33 @@
 include ./wow.stats.conf.mk
 
-start:
+up:
 	composer install
+	mkdir -p ./.docker/vscode/.config/code-server/
+	mkdir -p ./.docker/vscode/data/User/
+	cp ./vendor/h11/vscode-server-config/src/config.yaml ./.docker/vscode/.config/code-server/config.yaml
+	cp ./vendor/h11/vscode-server-config/src/settings.json ./.docker/vscode/data/User/settings.json
 	docker-compose up -d
-
-bash-www:
-	docker-compose run wow.stats.www bash
-
-bash-sql:
-	docker-compose run wow.stats.sql bash
-
-bash-sqladmin:
-	docker-compose run wow.stats.sqladmin bash
-
-bash-mq:
-	docker-compose run wow.stats.mq bash
-
-bash-vscode:
-	docker-compose run wow.stats.vscode bash
 
 down:
 	docker-compose down
 
 destroy:
-	docker-compose down && sudo rm -rf data
+	docker-compose down && sudo rm -rf ./.docker
+
+bash-www:
+	docker-compose exec www bash
+
+bash-sql:
+	docker-compose exec sql bash
+
+bash-sqladmin:
+	docker-compose exec sqladmin bash
+
+bash-mq:
+	docker-compose exec mq bash
+
+bash-vscode:
+	docker-compose exec vscode bash
 
 mysql:
 	docker-compose exec wow.stats.sql mysql -u $(MYSQL_ROOT_USER) -p$(MYSQL_ROOT_PW)

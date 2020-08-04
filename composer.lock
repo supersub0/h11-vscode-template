@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "72c7fceba29d5c732ad97aab4da82c06",
+    "content-hash": "51324bfc367817507431c9ad2a21bf0c",
     "packages": [
         {
             "name": "h11/iterator",
@@ -37,6 +37,17 @@
                 }
             },
             "time": "2020-06-26T13:00:46+00:00"
+        },
+        {
+            "name": "h11/vscode-server-config",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:supersub0/h11-vscode-server-config.git",
+                "reference": "7018cc86500262713bb96dcf10009adbbad41c72"
+            },
+            "type": "library",
+            "time": "2020-07-31T13:57:25+00:00"
         },
         {
             "name": "php-amqplib/php-amqplib",
@@ -117,16 +128,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "2.0.27",
+            "version": "2.0.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "34620af4df7d1988d8f0d7e91f6c8a3bf931d8dc"
+                "reference": "d1ca58cf33cb21046d702ae3a7b14fdacd9f3260"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/34620af4df7d1988d8f0d7e91f6c8a3bf931d8dc",
-                "reference": "34620af4df7d1988d8f0d7e91f6c8a3bf931d8dc",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/d1ca58cf33cb21046d702ae3a7b14fdacd9f3260",
+                "reference": "d1ca58cf33cb21046d702ae3a7b14fdacd9f3260",
                 "shasum": ""
             },
             "require": {
@@ -205,7 +216,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2020-04-04T23:17:33+00:00"
+            "time": "2020-07-08T09:08:33+00:00"
         }
     ],
     "packages-dev": [],
@@ -213,7 +224,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "h11/storage": 20,
-        "h11/iterator": 20
+        "h11/iterator": 20,
+        "h11/vscode-server-config": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
