@@ -1,14 +1,19 @@
 {
-    "name": "h11/wow.stats",
+    "name": "h11/php-template",
     "autoload": {
         "psr-4": {
-            "Converter\\": "src/"
+            "H11\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "H11\\": "tests/"
         }
     },
     "repositories": [
         {
           "type": "git",
-          "url": "git@github.com:supersub0/h11-storage.git"
+          "url": "git@github.com:supersub0/h11-vscode-server-config.git"
         },
         {
           "type": "git",
@@ -16,14 +21,18 @@
         },
         {
           "type": "git",
-          "url": "git@github.com:supersub0/h11-vscode-server-config.git"
+          "url": "git@github.com:supersub0/h11-storage.git"
         }
     ],
+    "require-dev": {
+        "h11/vscode-server-config": "master@dev",
+        "squizlabs/php_codesniffer": "^3.5"
+    },
     "require": {
         "php-amqplib/php-amqplib": ">=2.9.0",
-        "h11/storage": "master@dev",
+        "phpunit/phpunit": "^8",
         "h11/iterator": "master@dev",
-        "h11/vscode-server-config": "master@dev",
+        "h11/storage": "master@dev",
         "ext-json": "*"
     }
 }

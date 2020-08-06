@@ -1,4 +1,4 @@
-# wow.stats
+# H11
 
 ## Makefile
 
@@ -49,3 +49,5 @@ Opens mysql connection for mysql server defined in docker-compose
 - **MYSQL_ROOT_PW**: mysql root password
 - **UID**: current user id
 - **GID**: current user group
+- **VSCODE_PW**: vscode password
+- **VSCODE_ROOT_PW**: vscode root password
