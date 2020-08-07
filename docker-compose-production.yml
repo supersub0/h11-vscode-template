@@ -1,0 +1,56 @@
+version: "3.1"
+services:
+    www-production:
+        build:
+            context: .
+            dockerfile: ./docker/dockerfiles/www
+        image: php:7.4-apache
+        container_name: h11.www-production
+        ports:
+            - "8671:80"
+        volumes:
+            - ./src:/var/www/src/
+            - ./www:/var/www/html/
+            - ./vendor:/var/www/vendor/
+        links:
+            - sql-production
+        networks:
+            - backend-production
+    sql-production:
+        image: mysql:8
+        container_name: h11.sql-production
+        ports:
+            - "8674:3306"
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            MYSQL_DATABASE: ${MYSQL_DB}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PW}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PW}
+        volumes:
+            - ./assets/mysql:/docker-entrypoint-initdb.d
+            - ./.docker/mysql/conf:/etc/mysql/conf.d
+            - ./.docker/mysql/data:/var/lib/mysql
+        networks:
+            - backend-production
+    phpmyadmin-production:
+        image: phpmyadmin/phpmyadmin
+        container_name: h11.sqladmin-production
+        ports:
+            - "8675:80"
+        environment:
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PW}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PW}
+        volumes:
+            - ./assets/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+        links:
+            - sql-production
+        networks:
+            - backend-production
+volumes:
+    persistent:
+networks:
+    backend-production:
+        driver: "bridge"
+

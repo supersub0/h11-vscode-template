@@ -13,23 +13,7 @@ services:
             - ./www:/var/www/html/
             - ./vendor:/var/www/vendor/
         links:
-            - mq
             - sql
-        networks:
-            - backend
-    mq:
-        image: rabbitmq:3-management-alpine
-        container_name: h11.mq
-        ports:
-            - "8662:5672"
-            - "8663:15672"
-        environment:
-            RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
-            RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PW}
-        volumes:
-            - ./.docker/rabbitmq/etc/:/etc/rabbitmq/
-            - ./.docker/rabbitmq/data/:/var/lib/rabbitmq/
-            - ./.docker/rabbitmq/logs/:/var/log/rabbitmq/
         networks:
             - backend
     sql:

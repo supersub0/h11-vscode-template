@@ -3,9 +3,6 @@ include ./h11.conf.mk
 build:
 	docker-compose build --no-cache
 
-init-production:
-	composer install --no-dev
-
 init:
 	composer install
 	mkdir -p ./.docker/vscode/data/User/
@@ -39,4 +36,31 @@ bash-mq:
 bash-vscode:
 	docker-compose exec vscode bash
 
-.PHONY: all start bash-www bash-sql bash-sqladmin bash-mq bash-vscode down destroy mysql
+build-production:
+	docker-compose -f docker-compose-production.yml build --no-cache
+
+init-production:
+	composer install --no-dev
+
+up-production:
+	docker-compose -f docker-compose-production.yml up -d
+
+down-production:
+	docker-compose -f docker-compose-production.yml down
+
+destroy-production:
+	docker-compose -f docker-compose-production.yml down && sudo rm -rf ./.docker && sudo rm -rf ./vendor && sudo rm -rf composer.lock
+
+bash-www-production:
+	docker-compose -f docker-compose-production.yml exec www-production bash
+
+bash-sql-production:
+	docker-compose -f docker-compose-production.yml exec sql-production bash
+
+bash-sqladmin-production:
+	docker-compose -f docker-compose-production.yml exec sqladmin-production bash
+
+bash-vscode-production:
+	docker-compose -f docker-compose-production.yml exec vscode-production bash
+
+.PHONY: build init up down destroy bash-www bash-sql bash-sqladmin bash-vscode

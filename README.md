@@ -5,16 +5,13 @@
 ### Development
 
 #### make build
-Executes **docker-compose build**
+Builds images defined in docker-compose file
 
 #### make init
-Executes **composer install** and initiates files and folders
+Executes composer installation and initiates files and folders
 
 #### make up
-Executes **docker-compose up -d**
-
-#### make bash-CONTAINERNAME
-Opens bash to specified docker container
+Starts container defined in docker-compose file
 
 #### make down
 Shutdown all container that are defined in docker-compose file
@@ -22,17 +19,33 @@ Shutdown all container that are defined in docker-compose file
 #### make destroy
 Shutdown all container that are defined in docker-compose file and remove **vendor** and **.docker** folder
 
+#### make bash-CONTAINERNAME
+Opens bash to specified docker container
+
 ### Production
 
+#### make build-production
+Builds images defined in docker-compose file
+
 #### make init-production
-Executes **composer install --no-dev** and initiates files and folders
+Executes composer installation
+
+#### make up-production
+Starts container defined in docker-compose file
+
+#### make down-production
+Shutdown all container that are defined in docker-compose file
+
+#### make destroy-production
+Shutdown all container that are defined in docker-compose file and remove **vendor** and **.docker** folder
+
+#### make bash-CONTAINERNAME
+Opens bash to specified docker container
 
 ## Required Makefile config h11.conf.mk
 
 ### Values
 
-- **RABBITMQ_USER**: rabbit mq user
-- **RABBITMQ_PW**: rabbit mq password
 - **MYSQL_DB**: mysql database name
 - **MYSQL_USER**: mysql user name
 - **MYSQL_PW**: mysql password
