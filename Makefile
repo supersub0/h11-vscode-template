@@ -1,7 +1,7 @@
 include ./h11.conf.mk
 
 build:
-	docker-compose build
+	docker-compose build --no-cache
 
 init-production:
 	composer install --no-dev
@@ -12,7 +12,6 @@ init:
 	mkdir -p ./.docker/vscode/extensions/
 	mkdir -p ./.docker/vscode/custom-cont-init.d/
 	mkdir -p ./.docker/vscode/.config/code-server/
-	cp ./docker/dockerfiles/vscode ./.docker/vscode/custom-cont-init.d/vscode.sh
 	cp -r ./vendor/h11/vscode-server-config/src/extensions/* ./.docker/vscode/extensions
 	cp ./vendor/h11/vscode-server-config/src/settings.json ./.docker/vscode/data/User/settings.json
 

@@ -12,6 +12,9 @@ services:
             - ./src:/var/www/src/
             - ./www:/var/www/html/
             - ./vendor:/var/www/vendor/
+        links:
+            - mq
+            - sql
         networks:
             - backend
     mq:
@@ -57,9 +60,14 @@ services:
             MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PW}
         volumes:
             - ./assets/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+        links:
+            - sql
         networks:
             - backend
     vscode:
+        build:
+            context: ./
+            dockerfile: ./docker/dockerfiles/vscode
         image: linuxserver/code-server
         container_name: h11.vscode
         environment:
@@ -81,10 +89,33 @@ services:
             - ~/.git-completion.bash:/config/.git-completion.bash
         ports:
             - "8666:8443"
-        links:
-            - www
         networks:
             - backend
+    #flutter-android:
+    #    image: matspfeiffer/flutter
+    #    container_name: h11.flutter
+    #    ports:
+    #        - "42001:42000"
+    #    environment:
+    #        - UID=${UID}
+    #        - GID=${GID}
+    #    links:
+    #        - www
+    #    networks:
+    #        - backend
+    #flutter-web:
+    #    image: matspfeiffer/flutter:beta
+    #    container_name: h11.flutter
+    #    ports:
+    #        - "42002:42000"
+    #        - "8669:8090"
+    #    environment:
+    #        - UID=${UID}
+    #        - GID=${GID}
+    #    links:
+    #        - www
+    #    networks:
+    #        - backend
 volumes:
     persistent:
 networks:

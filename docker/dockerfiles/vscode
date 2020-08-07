@@ -1,1 +1,8 @@
-apt-get update && apt-get install -y software-properties-common && add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php7.4
+FROM linuxserver/code-server
+RUN apt-get -y update
+RUN apt-get -y install software-properties-common
+RUN add-apt-repository ppa:ondrej/php
+RUN apt-get -y update
+RUN apt-get -y install php7.4
+RUN npm --version
+RUN php --version
