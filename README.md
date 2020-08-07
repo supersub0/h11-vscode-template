@@ -1,4 +1,4 @@
-# H11 PHP template
+# H11 VSCode template
 
 ## Makefile
 
