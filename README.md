@@ -1,28 +1,17 @@
-# H11
+# H11 PHP template
 
 ## Makefile
 
-### development
+### Development
 
-#### make or make start
-Executes **composer install** and **docker-compose up -d**
+#### make build
+Executes **docker-compose build**
 
-#### make bash-CONTAINERNAME
-Opens bash to specified docker container
+#### make init
+Executes **composer install** and initiates files and folders
 
-#### make down
-Shutdown all container that are defined in docker-compose file
-
-#### make destroy
-Destroy all container that are defined in docker-compose file
-
-#### make mysql
-Opens mysql connection for mysql server defined in docker-compose
-
-### production
-
-#### make or make start
-Executes **composer install** and **docker-compose up -d**
+#### make up
+Executes **docker-compose up -d**
 
 #### make bash-CONTAINERNAME
 Opens bash to specified docker container
@@ -31,10 +20,12 @@ Opens bash to specified docker container
 Shutdown all container that are defined in docker-compose file
 
 #### make destroy
-Destroy all container that are defined in docker-compose file
+Shutdown all container that are defined in docker-compose file and remove **vendor** and **.docker** folder
 
-#### make mysql
-Opens mysql connection for mysql server defined in docker-compose
+### Production
+
+#### make init-production
+Executes **composer install --no-dev** and initiates files and folders
 
 ## Required Makefile config h11.conf.mk
 

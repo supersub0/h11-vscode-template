@@ -3,6 +3,9 @@ include ./h11.conf.mk
 build:
 	docker-compose build
 
+init-production:
+	composer install --no-dev
+
 init:
 	composer install
 	mkdir -p ./.docker/vscode/data/User/
@@ -36,8 +39,5 @@ bash-mq:
 
 bash-vscode:
 	docker-compose exec vscode bash
-
-mysql:
-	docker-compose exec h11.sql mysql -u $(MYSQL_ROOT_USER) -p$(MYSQL_ROOT_PW)
 
 .PHONY: all start bash-www bash-sql bash-sqladmin bash-mq bash-vscode down destroy mysql
